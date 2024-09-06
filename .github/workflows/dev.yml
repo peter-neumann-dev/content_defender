@@ -2,6 +2,10 @@ name: 🏃 dev tests
 
 on: [ push, pull_request ]
 
+concurrency:
+    group: ${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
+
 jobs:
     compute:
         uses: ./.github/workflows/compute.yml

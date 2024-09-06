@@ -46,6 +46,10 @@ env:
             },
         }
 
+concurrency:
+    group: ${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
+
 on:
     workflow_call:
         outputs:

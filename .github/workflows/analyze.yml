@@ -8,6 +8,10 @@ on:
             - premerge/*
             - pre-merge
 
+concurrency:
+    group: ${{ github.head_ref || github.ref }}
+    cancel-in-progress: true
+
 jobs:
     compute:
         uses: ./.github/workflows/compute.yml
